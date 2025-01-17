@@ -1,4 +1,4 @@
-package echo_ifElse
+package server
 
 import (
 	"echo_ifElse/pkg/handler"

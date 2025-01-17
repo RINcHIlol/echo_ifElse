@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	usersTable = "users"
+	usersTable = "account"
 )
 
 type Config struct {
@@ -25,7 +25,6 @@ func NewPostgresDB(cfg Config) (*sqlx.DB, error) {
 	if err != nil {
 		return nil, err
 	}
-	fmt.Println("doshlo")
 	err = db.Ping()
 	if err != nil {
 		return nil, err
