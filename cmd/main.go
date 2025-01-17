@@ -1,14 +1,16 @@
 package main
 
 import (
-	"echo_ifElse"
+	"echo_ifElse/pkg/handler"
 	"echo_ifElse/pkg/repository"
+	"echo_ifElse/pkg/service"
+	"echo_ifElse/server"
 	_ "github.com/lib/pq"
 	"log"
 )
 
 func main() {
-	_, err := repository.NewPostgresDB(repository.Config{
+	db, err := repository.NewPostgresDB(repository.Config{
 		Host:     "localhost",
 		Port:     "5434",
 		Username: "postgres",
@@ -20,7 +22,12 @@ func main() {
 		log.Fatal(err)
 	}
 
-	if err := echo_ifElse.Run(); err != nil {
+	repos := repository.NewRepository(db)
+	services := service.NewService(repos)
+	handlers := handler.NewHandler(services)
+	server := server.NewServer(handlers)
+
+	if err := server.Run(); err != nil {
 		log.Fatal("shutDowning")
 	}
 }
