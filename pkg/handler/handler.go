@@ -16,4 +16,7 @@ func NewHandler(services *service.Service) *Handler {
 func (h *Handler) InitRoutes(e *echo.Echo) {
 	e.POST("/registration", h.registration)
 	e.GET("/accounts/:id", h.getAcc)
+	e.POST("/accounts", h.addAcc)
+	e.PUT("/accounts/:id", h.updateAcc)
+	e.DELETE("/accounts/:id", h.deleteAcc)
 }

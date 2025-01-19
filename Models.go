@@ -5,6 +5,7 @@ type AccountRequest struct {
 	LastName  string `json:"lastName"`
 	Email     string `json:"email"`
 	Password  string `json:"password"`
+	Role      string `json:"role"`
 }
 
 type AccountResponse struct {
@@ -13,4 +14,12 @@ type AccountResponse struct {
 	LastName  string `json:"lastName"`
 	Email     string `json:"email"`
 	Role      string `json:"role"`
+}
+
+type UpdateAccountResponse struct {
+	FirstName *string `json:"firstName"`
+	LastName  *string `json:"lastName"`
+	Email     *string `json:"email"`
+	Password  *string `json:"password"`
+	Role      *string `json:"role"`
 }

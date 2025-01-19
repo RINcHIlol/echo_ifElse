@@ -22,3 +22,15 @@ func (a *AccountService) Registration(req echo_ifElse.AccountRequest) (int, erro
 func (a *AccountService) GetAcc(id int) (echo_ifElse.AccountResponse, error) {
 	return a.repo.GetAcc(id)
 }
+
+func (a *AccountService) AddAcc(req echo_ifElse.AccountRequest) (int, error) {
+	return a.repo.AddAcc(req)
+}
+
+func (a *AccountService) UpdateAcc(userId int, req echo_ifElse.UpdateAccountResponse) (echo_ifElse.AccountResponse, error) {
+	return a.repo.UpdateAcc(userId, req)
+}
+
+func (a *AccountService) DeleteAcc(userId int) error {
+	return a.repo.DeleteAcc(userId)
+}
